@@ -9,5 +9,19 @@ namespace FirstUnitTest
             return a + b;
         }
 
+        public double AddNumbersDouble(double a, double b)
+        {
+            return Math.Round(a + b, 2);
+        }
+
+
+        public bool IsOddNumber(int a)
+        {
+            return a % 2 != 0;
+        }
+    
     }
+
+
+
 }
