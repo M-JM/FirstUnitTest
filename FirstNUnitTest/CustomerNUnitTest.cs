@@ -26,12 +26,16 @@ namespace FirstUnitTest
     
             string fullName = customer.GreetAndCombineName("Jimmy", "Miels");
 
-            Assert.That(fullName, Is.EqualTo("Hello, Jimmy Miels"));
-            Assert.AreEqual(fullName,"Hello, Jimmy Miels");
-            Assert.That(fullName, Does.StartWith("hello").IgnoreCase);
-            Assert.That(fullName, Does.Contain(","));
-            Assert.That(fullName, Does.EndWith("Miels"));
-            Assert.That(fullName, Does.Match("Hello, [A-Z]{1}[a-z]+ [A-Z]{1}[a-z]+"));
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(fullName, Is.EqualTo("Hello, Jimmy Miels"));
+                Assert.AreEqual(fullName, "Hello, Jimmy Miels");
+                Assert.That(fullName, Does.StartWith("hello").IgnoreCase);
+                Assert.That(fullName, Does.Contain(","));
+                Assert.That(fullName, Does.EndWith("Miels"));
+                Assert.That(fullName, Does.Match("Hello, [A-Z]{1}[a-z]+ [A-Z]{1}[a-z]+"));
+            });
         }
 
         [Test]
@@ -53,5 +57,15 @@ namespace FirstUnitTest
             Assert.IsNotNull(customer.GreetMessage);
 
         }
+
+        [Test]
+        public void DiscountCheckerDefaultCustomer_RetunsDiscountInRange()
+        {
+            int result = customer.Discount;
+
+            Assert.That(result, Is.InRange(15,20));
+
     }
+}
+
 }

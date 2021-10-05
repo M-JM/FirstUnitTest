@@ -10,6 +10,7 @@ namespace FirstUnitTest
     {
         public string GreetMessage{ get; set; }
 
+        public int Discount = 15;
 
         public string GreetAndCombineName(string firstName, string LastName)
         {
