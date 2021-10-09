@@ -10,6 +10,8 @@ namespace FirstUnitTest
     {
         public string GreetMessage{ get; set; }
 
+        public int OrderTotal { get; set; }
+
         public int Discount = 15;
 
         public string GreetAndCombineName(string firstName, string LastName)
@@ -24,5 +26,24 @@ namespace FirstUnitTest
             return GreetMessage;
         }
 
+        public CustomerType GetCustomerDetails()
+        {
+            if(OrderTotal < 100)
+            {
+                return new BasisCustomer();
+            }
+            else
+            {
+                return new PlatinumCustomer();
+            }
+        }
+
     }
+
+
+    public class CustomerType { }
+
+    public class BasisCustomer : CustomerType { }
+
+    public class PlatinumCustomer : CustomerType { }
 }

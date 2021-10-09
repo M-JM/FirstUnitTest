@@ -96,6 +96,29 @@ namespace FirstUnitTest
             Throws.ArgumentException);
         }
 
+
+        [Test]
+        public void CustomerType_CreateCustomerWithLessthan100POrder_returnBasicCustomer()
+        {
+            customer.OrderTotal = 10;
+            var result = customer.GetCustomerDetails();
+
+            Assert.That(result, Is.TypeOf<BasisCustomer>());
+ 
+        }
+
+
+        [Test]
+        public void CustomerType_CreateCustomerWithmorethan100POrder_returnPlatinumCustomer()
+        {
+            customer.OrderTotal = 101;
+            var result = customer.GetCustomerDetails();
+
+            Assert.That(result, Is.TypeOf<PlatinumCustomer>());
+
+        }
+
+
     }
 
 }
