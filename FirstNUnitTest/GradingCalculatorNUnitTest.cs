@@ -94,7 +94,6 @@ namespace FirstUnitTest
         [Test]
         public string GradingScoreAllCases_InputScore_InputAttendence_OutputGrade(int Score, int Attendence)
         {
-            // Oplossing volgens de cursus zonder expectedResult en dan test Asserten volgens de voorgaande UnitTesten.
 
             gradingCalculator.AttendancePercentage = Attendence;
             gradingCalculator.Score = Score;
