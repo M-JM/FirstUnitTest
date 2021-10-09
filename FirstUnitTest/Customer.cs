@@ -14,6 +14,11 @@ namespace FirstUnitTest
 
         public string GreetAndCombineName(string firstName, string LastName)
         {
+            if (string.IsNullOrWhiteSpace(firstName))
+            {
+                throw new ArgumentException("Empty First Name");
+            }
+
             GreetMessage =  $"Hello, {firstName} {LastName}";
 
             return GreetMessage;

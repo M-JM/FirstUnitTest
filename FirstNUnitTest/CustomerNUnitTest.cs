@@ -66,6 +66,36 @@ namespace FirstUnitTest
             Assert.That(result, Is.InRange(15,20));
 
     }
-}
+
+        [Test]
+        public void GreetMessage_GreetedwithoutLastName_ReturnNotNull()
+        {
+            customer.GreetAndCombineName("ben", "");
+
+            Assert.IsNotNull(customer.GreetMessage);
+
+        }
+
+        [Test]
+        public void GreetChecker_EmptyFirstName_ThrowsExpection()
+        {
+            customer.GreetAndCombineName("ben", "");
+
+            var expectionsdetails = Assert.Throws<ArgumentException>(() => customer.GreetAndCombineName("", "jimmy"));
+
+            Assert.AreEqual("Empty First Name", expectionsdetails.Message);
+            Assert.That(() => 
+            customer.GreetAndCombineName("", "jimmy"),
+            Throws.ArgumentException.With.Message.EqualTo("Empty First Name"));
+
+
+            Assert.Throws<ArgumentException>(() => customer.GreetAndCombineName("", "jimmy"));
+
+            Assert.That(() =>
+            customer.GreetAndCombineName("", "jimmy"),
+            Throws.ArgumentException);
+        }
+
+    }
 
 }
