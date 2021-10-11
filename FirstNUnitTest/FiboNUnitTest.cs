@@ -25,7 +25,7 @@ namespace FirstUnitTest
         {
             fibo.Range = 1;
 
-            List<int> expectedResult = new List<int>() { 0 };
+            List<int> expectedResult = new() { 0 };
             List<int> result = fibo.GetFiboSeries();
 
             Assert.That(result, Is.EquivalentTo(expectedResult));
@@ -39,7 +39,7 @@ namespace FirstUnitTest
         public void Fibo_InputRange6_OutputListwith1Element()
         {
             fibo.Range = 6;
-            List<int> expectedResult = new List<int>() { 0,1,1,2,3,5 };
+            List<int> expectedResult = new() { 0,1,1,2,3,5 };
             List<int> result = fibo.GetFiboSeries();
 
             Assert.That(result, Is.EquivalentTo(expectedResult));
