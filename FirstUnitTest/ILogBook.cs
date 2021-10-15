@@ -9,5 +9,11 @@ namespace FirstUnitTest
    public interface ILogBook
     {
         void Message(string message);
+
+        bool LogToDb(string message);
+
+        bool LogBalanceAfterWithdrawal(int balanceAfterWithdrawal);
+
+        string MessageWithReturnStr(string message);
     }
 }

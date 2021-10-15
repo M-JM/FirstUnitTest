@@ -22,6 +22,9 @@ namespace FirstUnitTest
 
         }
 
+        // It is not always good to use mOq where it is not needed. If customer did not have an interface there is no need
+        // to create a entirely new interface for the sake of using Moq.
+
         [Test]
         public void GetProductPriceMoqAbuse_PlatinumCustomer_ReturnPriceWith20Discount()
         {

@@ -12,17 +12,43 @@ namespace FirstUnitTest
         {
             Console.WriteLine(message);
         }
+
+        public bool LogToDb(string message)
+        {
+            Console.WriteLine(message);
+            return true;
+        }
+
+        public bool LogBalanceAfterWithdrawal(int balanceAfterWithdrawal)
+        {
+            if(balanceAfterWithdrawal >= 0)
+            {
+                Console.WriteLine("Succes");
+                return true;
+            }
+            Console.WriteLine("Fails");
+            return false;
+        }
+
+        public string MessageWithReturnStr(string message)
+        {
+            Console.WriteLine(message);
+
+            return message;
+        }
+
+
     }
 
 
     // When Unit testing we do not want to make are tests with real dependencies.
     // This would fall under the category of Integrations Test thus mixin two seperate types of tests.
     // To avoid this problem we create a fake implementation of LogBook with void methods -> null object
-    public class LogBookFake : ILogBook
-    {
-        public void Message(string message)
-        {
-        }
-    }
+    //public class LogBookFake : ILogBook
+    //{
+    //    public void Message(string message)
+    //    {
+    //    }
+    //}
 
 }
