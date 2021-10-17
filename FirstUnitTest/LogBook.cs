@@ -8,6 +8,9 @@ namespace FirstUnitTest
 {
     public class LogBook : ILogBook
     {
+        public int LogSeverity { get; set; }
+        public string LogType { get; set; }
+
         public void Message(string message)
         {
             Console.WriteLine(message);
@@ -35,6 +38,17 @@ namespace FirstUnitTest
             Console.WriteLine(message);
 
             return message;
+        }
+
+        public bool LogWithOutputResult(string str, out string outputStr)
+        {
+            outputStr = "Hello " + str;
+            return true;
+        }
+
+        public bool LogWithRefObj(ref Customer customer)
+        {
+            return true;
         }
 
 
