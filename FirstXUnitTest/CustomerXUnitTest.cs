@@ -1,123 +1,113 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Xunit;
 
-//namespace FirstUnitTest
-//{
+namespace FirstUnitTest
+{
 
-//   [TestFixture]
-//   public class CustomerXUnitTest
-//    {
-//        private Customer customer;
+  
+    public class CustomerXUnitTest
+    {
+        private Customer customer;
 
-//        [SetUp]
-//        public void Setup()
-//        {
-//            customer = new Customer();
-//        }
-
-
-//        [Test]
-//        public void CombineName_InputFirstAndLastName_ReturnFullName()
-//        {
-    
-//            string fullName = customer.GreetAndCombineName("Jimmy", "Miels");
+        public CustomerXUnitTest()
+        {
+            customer = new Customer();
+        }
 
 
-//            Assert.Multiple(() =>
-//            {
-//                Assert.That(fullName, Is.EqualTo("Hello, Jimmy Miels"));
-//                Assert.AreEqual(fullName, "Hello, Jimmy Miels");
-//                Assert.That(fullName, Does.StartWith("hello").IgnoreCase);
-//                Assert.That(fullName, Does.Contain(","));
-//                Assert.That(fullName, Does.EndWith("Miels"));
-//                Assert.That(fullName, Does.Match("Hello, [A-Z]{1}[a-z]+ [A-Z]{1}[a-z]+"));
-//            });
-//        }
+        [Fact]
+        public void CombineName_InputFirstAndLastName_ReturnFullName()
+        {
 
-//        [Test]
-
-//        public void GreetMessage_NotGreeted_ReturnsNull()
-//        {
- 
-
-//            Assert.IsNull(customer.GreetMessage);
-
-//        }
-//        [Test]
-//        public void GreetMessage_NotGreeted_ReturnsIsNotNull()
-//        {
-         
-            
-//            customer.GreetAndCombineName("Jimmy", "Miels");
-
-//            Assert.IsNotNull(customer.GreetMessage);
-
-//        }
-
-//        [Test]
-//        public void DiscountCheckerDefaultCustomer_RetunsDiscountInRange()
-//        {
-//            int result = customer.Discount;
-
-//            Assert.That(result, Is.InRange(15,20));
-
-//    }
-
-//        [Test]
-//        public void GreetMessage_GreetedwithoutLastName_ReturnNotNull()
-//        {
-//            customer.GreetAndCombineName("ben", "");
-
-//            Assert.IsNotNull(customer.GreetMessage);
-
-//        }
-
-//        [Test]
-//        public void GreetChecker_EmptyFirstName_ThrowsExpection()
-//        {
-//            customer.GreetAndCombineName("ben", "");
-
-//            var expectionsdetails = Assert.Throws<ArgumentException>(() => customer.GreetAndCombineName("", "jimmy"));
-
-//            Assert.AreEqual("Empty First Name", expectionsdetails.Message);
-//            Assert.That(() => 
-//            customer.GreetAndCombineName("", "jimmy"),
-//            Throws.ArgumentException.With.Message.EqualTo("Empty First Name"));
+            string fullName = customer.GreetAndCombineName("Jimmy", "Miels");
 
 
-//            Assert.Throws<ArgumentException>(() => customer.GreetAndCombineName("", "jimmy"));
+            Assert.Equal("Hello, Jimmy Miels", customer.GreetMessage);
+            Assert.Contains("jimmy Miels".ToLower(), customer.GreetMessage.ToLower());
+            Assert.StartsWith("Hello,", customer.GreetMessage);
+            Assert.EndsWith("Miels", customer.GreetMessage);
 
-//            Assert.That(() =>
-//            customer.GreetAndCombineName("", "jimmy"),
-//            Throws.ArgumentException);
-//        }
+            Assert.Matches("Hello, [A-Z]{1}[a-z]+ [A-Z]{1}[a-z]+", customer.GreetMessage);
+        }
 
+        [Fact]
 
-//        [Test]
-//        public void CustomerType_CreateCustomerWithLessthan100POrder_returnBasicCustomer()
-//        {
-//            customer.OrderTotal = 10;
-//            var result = customer.GetCustomerDetails();
-
-//            Assert.That(result, Is.TypeOf<BasisCustomer>());
- 
-//        }
+        public void GreetMessage_NotGreeted_ReturnsNull()
+        {
 
 
-//        [Test]
-//        public void CustomerType_CreateCustomerWithmorethan100POrder_returnPlatinumCustomer()
-//        {
-//            customer.OrderTotal = 101;
-//            var result = customer.GetCustomerDetails();
+            Assert.Null(customer.GreetMessage);
 
-//            Assert.That(result, Is.TypeOf<PlatinumCustomer>());
-
-//        }
+        }
+        [Fact]
+        public void GreetMessage_NotGreeted_ReturnsIsNotNull()
+        {
 
 
-//    }
+            customer.GreetAndCombineName("Jimmy", "Miels");
 
-//}
+            Assert.NotNull(customer.GreetMessage);
+
+        }
+
+        [Fact]
+        public void DiscountCheckerDefaultCustomer_RetunsDiscountInRange()
+        {
+            int result = customer.Discount;
+
+            Assert.InRange(result, 10, 25);
+
+        }
+
+        [Fact]
+        public void GreetMessage_GreetedwithoutLastName_ReturnNotNull()
+        {
+            customer.GreetAndCombineName("ben", "");
+
+            Assert.NotNull(customer.GreetMessage);
+            Assert.False(string.IsNullOrEmpty(customer.GreetMessage));
+
+        }
+
+        [Fact]
+        public void GreetChecker_EmptyFirstName_ThrowsExpection()
+        {
+            var exceptionDetails = Assert.Throws<ArgumentException>(() => customer.GreetAndCombineName("", "jimmy"));
+            Assert.Equal("Empty First Name", exceptionDetails.Message);
+
+            Assert.Throws<ArgumentException>(() => customer.GreetAndCombineName("", "jimmy"));
+
+        }
+
+
+        [Fact]
+        public void CustomerType_CreateCustomerWithLessthan100POrder_returnBasicCustomer()
+        {
+            customer.OrderTotal = 10;
+
+            var result = customer.GetCustomerDetails();
+
+            Assert.IsType<BasisCustomer>(result);
+
+        }
+
+
+        [Fact]
+        public void CustomerType_CreateCustomerWithmorethan100POrder_returnPlatinumCustomer()
+        {
+            customer.OrderTotal = 110;
+
+            var result = customer.GetCustomerDetails();
+
+            Assert.IsType<PlatinumCustomer>(result);
+
+        }
+
+
+    }
+
+}
