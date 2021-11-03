@@ -1,54 +1,57 @@
-﻿//using NUnit.Framework;
-//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Xunit;
 
-//namespace FirstUnitTest
-//{
-//    [TestFixture]
-//    public class FiboXUnitTest
-//    {
+namespace FirstUnitTest
+{
+    
+    public class FiboXUnitTest
+    {
+
+
+        private Fibo _fibo;
 
         
-//        private Fibo fibo;
+      
+        [Fact]
+        public void Fibo_InputRange1_OutputListwith1Element()
+        {
+            _fibo = new Fibo
+            {
+                Range = 1
+            };
 
-//        [SetUp]
-//        public void setUp()
-//        {
-//            fibo = new Fibo();
-//        }
+            List<int> expectedResult = new() { 0 };
+            List<int> result = _fibo.GetFiboSeries();
 
-//        [Test]
-//        public void Fibo_InputRange1_OutputListwith1Element()
-//        {
-//            fibo.Range = 1;
+            Assert.Equal(expectedResult, result);
+            Assert.NotEmpty(result);
+            Assert.Single(result);
+            Assert.True(result.SequenceEqual(expectedResult));
 
-//            List<int> expectedResult = new() { 0 };
-//            List<int> result = fibo.GetFiboSeries();
-
-//            Assert.That(result, Is.EquivalentTo(expectedResult));
-//            Assert.That(result, Is.Not.Empty);
-//            Assert.That(result.Count, Is.EqualTo(1));
-//            Assert.That(result, Is.Ordered);
-//        }
+        }
 
 
-//        [Test]
-//        public void Fibo_InputRange6_OutputListwith1Element()
-//        {
-//            fibo.Range = 6;
-//            List<int> expectedResult = new() { 0,1,1,2,3,5 };
-//            List<int> result = fibo.GetFiboSeries();
+        [Fact]
+        public void Fibo_InputRange6_OutputListwith1Element()
+        {
+            _fibo = new Fibo
+            {
+                Range = 6
+            };
+            List<int> expectedResult = new() { 0, 1, 1, 2, 3, 5 };
+            List<int> result = _fibo.GetFiboSeries();
 
-//            Assert.That(result, Is.EquivalentTo(expectedResult));
-//            Assert.That(result, Is.Not.Empty);
-//            Assert.That(result.Count, Is.EqualTo(6));
-//            Assert.That(result, Is.Ordered);
-//            Assert.That(result, Does.Contain(3));
-//            Assert.That(result,Does.Not.Contain(4));
-//        }
+            Assert.Equal(result,expectedResult);
+            Assert.Contains(3, result);
+            Assert.NotEmpty(result);
+            Assert.DoesNotContain(4, result);
+            Assert.Equal(6, result.Count);
+        
+        }
 
-//    }
-//}
+    }
+}
