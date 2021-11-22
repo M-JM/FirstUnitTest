@@ -23,9 +23,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FirstXUnitTest", "FirstXUni
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FirstUnitTest", "FirstUnitTest\FirstUnitTest.csproj", "{164968D3-7E58-4FA3-BA2D-CD8120239B48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bongo.Models.Test", "Bongo.Models.Test\Bongo.Models.Test.csproj", "{1B3C3B15-CF26-4245-9EBF-FE7E8544B4E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bongo.Models.Test", "Bongo.Models.Test\Bongo.Models.Test.csproj", "{1B3C3B15-CF26-4245-9EBF-FE7E8544B4E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bongo.DataAccess.Tests", "Bongo.DataAccess.Tests\Bongo.DataAccess.Tests.csproj", "{230F3C80-850A-4D2B-9456-6572C0B4D6C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bongo.DataAccess.Tests", "Bongo.DataAccess.Tests\Bongo.DataAccess.Tests.csproj", "{230F3C80-850A-4D2B-9456-6572C0B4D6C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bongo.Core.Tests", "Bongo.Core.Tests\Bongo.Core.Tests.csproj", "{C01E3954-CF99-43D6-840C-4428A9468122}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +75,10 @@ Global
 		{230F3C80-850A-4D2B-9456-6572C0B4D6C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{230F3C80-850A-4D2B-9456-6572C0B4D6C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{230F3C80-850A-4D2B-9456-6572C0B4D6C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C01E3954-CF99-43D6-840C-4428A9468122}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C01E3954-CF99-43D6-840C-4428A9468122}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C01E3954-CF99-43D6-840C-4428A9468122}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C01E3954-CF99-43D6-840C-4428A9468122}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -88,6 +94,7 @@ Global
 		{164968D3-7E58-4FA3-BA2D-CD8120239B48} = {45D0934E-812E-4E8E-AED2-4AE7910FA6B9}
 		{1B3C3B15-CF26-4245-9EBF-FE7E8544B4E8} = {E2EE489A-42F1-4F5F-BB0F-B9B3A3E0B9F3}
 		{230F3C80-850A-4D2B-9456-6572C0B4D6C3} = {E2EE489A-42F1-4F5F-BB0F-B9B3A3E0B9F3}
+		{C01E3954-CF99-43D6-840C-4428A9468122} = {E2EE489A-42F1-4F5F-BB0F-B9B3A3E0B9F3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4127715A-D6A9-46F7-9383-8A64084C7DBF}
